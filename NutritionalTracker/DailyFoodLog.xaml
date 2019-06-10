@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="NutritionalTracker.DailyFoodLog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel Orientation="Vertical">
+        <ItemsControl ItemsSource="{Binding DailyLog.MealsWithProducts, RelativeSource={RelativeSource AncestorType=UserControl}}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Margin="0 0 0 20">
+                        <TextBlock FontWeight="Bold" FontStyle="Italic" Text="{Binding Key.Name}" />
+                        <ItemsControl ItemsSource="{Binding Value}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical" Margin="0 0 0 5">
+                                        <DockPanel>
+                                            <DockPanel DockPanel.Dock="Top">
+                                                <Button DockPanel.Dock="Left" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Command="{Binding DeleteLogCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}">
+                                                    <Image Source="Assets/trashcan.png" Width="15" Height="15" />
+                                                </Button>
+                                                <TextBlock Text="{Binding LogSummary}" Margin="10 0 0 0" FontWeight="Bold" />
+                                            </DockPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock>Energy:</TextBlock>
+                                                <TextBlock Width="75" Text="{Binding Kilocalories, StringFormat={} {0} kcal}" Margin="0 0 10 0" />
+
+                                                <TextBlock>Fats:</TextBlock>
+                                                <TextBlock Width="50" Text="{Binding GramsOfFat, StringFormat={} {0} g}" Margin="0 0 10 0" />
+
+                                                <TextBlock>Proteins:</TextBlock>
+                                                <TextBlock Width="50" Text="{Binding GramsOfProtein, StringFormat={} {0} g}" Margin="0 0 10 0" />
+                                            </StackPanel>
+                                        </DockPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>

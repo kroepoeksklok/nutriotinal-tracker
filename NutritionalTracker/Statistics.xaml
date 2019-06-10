@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="NutritionalTracker.Statistics"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel Orientation="Vertical">
+        <TextBlock FontWeight="Bold">Statistics</TextBlock>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Width="140">Energy</TextBlock>
+            <TextBlock Width="45" Text="{Binding Stats.TotalEnergy, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <TextBlock>kcal</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Width="140">Fats</TextBlock>
+            <TextBlock Width="45" Text="{Binding Stats.TotalFats, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <TextBlock>g</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Margin="15 0 0 0" Width="125">Saturated fats</TextBlock>
+            <TextBlock Width="45" Text="{Binding Stats.TotalSaturatedFats, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <TextBlock>g</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Margin="15 0 0 0" Width="125">Mono unsaturated fats</TextBlock>
+            <TextBlock Width="45" Text="{Binding Stats.TotalMonoUnsaturatedFats, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <TextBlock>g</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Margin="15 0 0 0" Width="125">Poly unsaturated fats</TextBlock>
+            <TextBlock Width="45" Text="{Binding Stats.TotalPolyUnsaturatedFats, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <TextBlock>g</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Width="140">Carbohydrates</TextBlock>
+            <TextBlock Width="45" Text="{Binding Stats.TotalCarbohydrates, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <TextBlock>g</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Margin="15 0 0 0" Width="125">Sugar</TextBlock>
+            <TextBlock Width="45" Text="{Binding Stats.TotalSugar, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <TextBlock>g</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Width="140">Proteins</TextBlock>
+            <TextBlock Width="45" Text="{Binding Stats.TotalProteins, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <TextBlock>g</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Width="140">Salt</TextBlock>
+            <TextBlock Width="45" Text="{Binding Stats.TotalSalt, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <TextBlock>g</TextBlock>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
