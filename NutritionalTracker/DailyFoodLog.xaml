@@ -31,6 +31,9 @@
 
                                                 <TextBlock>Proteins:</TextBlock>
                                                 <TextBlock Width="50" Text="{Binding GramsOfProtein, StringFormat={} {0} g}" Margin="0 0 10 0" />
+
+                                                <TextBlock>Carbohydrates:</TextBlock>
+                                                <TextBlock Width="50" Text="{Binding GramsOfCarbohydrates, StringFormat={} {0} g}" Margin="0 0 10 0" />
                                             </StackPanel>
                                         </DockPanel>
                                     </StackPanel>
