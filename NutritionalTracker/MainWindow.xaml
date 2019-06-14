@@ -35,8 +35,8 @@
         <StackPanel DockPanel.Dock="Right">
             <nutritionalTracker:Statistics Stats="{Binding Statistics}" />
         </StackPanel>
-        <StackPanel Orientation="Vertical" Margin="10 0 10 0">
+        <ScrollViewer Margin="10 0 10 0">
             <nutritionalTracker:DailyFoodLog DailyLog="{Binding DailyLog}" DeleteLogCommand="{Binding DeleteFoodLog}" />
-        </StackPanel>
+        </ScrollViewer>
     </DockPanel>
 </Window>
