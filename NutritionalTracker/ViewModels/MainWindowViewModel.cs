@@ -22,7 +22,7 @@ namespace NutritionalTracker.ViewModels
         private Models.Meal _selectedMeal;
         private DailyLog _dailyLog;
         private Models.Statistics _statistics;
-        private int _servingsEaten;
+        private double _servingsEaten;
         private int _amountOfProductConsumed;
         private DateTime _selectedDate;
         private string _unit;
@@ -84,7 +84,7 @@ namespace NutritionalTracker.ViewModels
             }
         }
 
-        public int ServingsEaten
+        public double ServingsEaten
         {
             get => _servingsEaten;
             set
