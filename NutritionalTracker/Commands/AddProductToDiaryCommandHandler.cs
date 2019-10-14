@@ -14,7 +14,7 @@ namespace NutritionalTracker.Commands
 
         public void Handle(AddProductToDiaryCommand command)
         {
-            Product product = _context.Products.First(p => p.ProductId == command.ProductId);
+            var product = _context.Products.First(p => p.ProductId == command.ProductId);
             DiaryHelper.AddProductToDiary(_context, command.AmountConsumed, product, command.MealId, command.ConsumedDate);
             _context.SaveChanges();
         }

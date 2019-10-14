@@ -16,15 +16,15 @@ namespace NutritionalTracker.Commands
 
         public void Handle(AddRecipeToDiaryCommand command)
         {
-            Recipe recipe = _context.Recipes
+            var recipe = _context.Recipes
                 .Include(r => r.Ingredients.Select(i => i.Product))
                 .First(r => r.RecipeId == command.RecipeId);
 
             decimal servingsRatio = (decimal)command.NumberOfServingsConsumed / recipe.Servings;
 
-            foreach (Ingredient ingredient in recipe.Ingredients)
+            foreach (var ingredient in recipe.Ingredients)
             {
-                int amountConsumed = (int)Math.Round(ingredient.Amount * servingsRatio, 0, MidpointRounding.AwayFromZero);
+                var amountConsumed = (int)Math.Round(ingredient.Amount * servingsRatio, 0, MidpointRounding.AwayFromZero);
                 DiaryHelper.AddProductToDiary(_context, amountConsumed, ingredient.Product, command.MealId, command.ConsumedDate);
             }
 

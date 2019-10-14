@@ -206,28 +206,27 @@ namespace NutritionalTracker.ViewModels
 
         private void DeleteFoodLogHandler(object parameter)
         {
-            LogEntry logentry = (LogEntry) parameter;
+            var logentry = (LogEntry) parameter;
             _commandProcessor.Process(new DeleteFoodLogCommand
             {
                 FoodLogId = logentry.FoodLogId
             });
 
             LoadDailyData();
-
         }
         
         private void LoadData()
         {
-            GetAllRecipesQuery recipesQuery = new GetAllRecipesQuery();
-            IReadOnlyList<Database.Recipe> dbRecipes = _queryProcessor.Process(recipesQuery);
+            var recipesQuery = new GetAllRecipesQuery();
+            var dbRecipes = _queryProcessor.Process(recipesQuery);
             Recipes = new List<Models.Recipe>(dbRecipes.Select(_mapperProcessor.Map<Database.Recipe, Models.Recipe>));
 
-            GetAllProductsQuery productsQuery = new GetAllProductsQuery();
-            IReadOnlyList<Database.Product> dbProducts = _queryProcessor.Process(productsQuery);
+            var productsQuery = new GetAllProductsQuery();
+            var dbProducts = _queryProcessor.Process(productsQuery);
             Products = new List<Models.Product>(dbProducts.Select(_mapperProcessor.Map<Database.Product, Models.Product>));
 
-            GetAllMealsQuery mealsQuery = new GetAllMealsQuery();
-            IReadOnlyList<Database.Meal> dbMeals = _queryProcessor.Process(mealsQuery);
+            var mealsQuery = new GetAllMealsQuery();
+            var dbMeals = _queryProcessor.Process(mealsQuery);
             Meals = new List<Models.Meal>(dbMeals.Select(_mapperProcessor.Map<Database.Meal, Models.Meal>));
         }
 
@@ -241,7 +240,7 @@ namespace NutritionalTracker.ViewModels
 
         private void LoadLogEntries()
         {
-            GetFoodLogQuery getFoodLogQuery = new GetFoodLogQuery
+            var getFoodLogQuery = new GetFoodLogQuery
             {
                 Date = SelectedDate
             };
@@ -250,8 +249,8 @@ namespace NutritionalTracker.ViewModels
 
         private void LoadFoodLog()
         {
-            DailyLog dailyLog = new DailyLog(_mapperProcessor, Meals);
-            foreach (FoodLog foodLog in _logEntries)
+            var dailyLog = new DailyLog(_mapperProcessor, Meals);
+            foreach (var foodLog in _logEntries)
             {
                 dailyLog.AddLogEntry(foodLog);
             }
@@ -261,8 +260,8 @@ namespace NutritionalTracker.ViewModels
 
         private void LoadStatistics()
         {
-            Models.Statistics statistics = new Models.Statistics();
-            foreach (FoodLog foodLog in _logEntries)
+            var statistics = new Models.Statistics();
+            foreach (var foodLog in _logEntries)
             {
                 statistics.AddLogEntry(foodLog);
             }

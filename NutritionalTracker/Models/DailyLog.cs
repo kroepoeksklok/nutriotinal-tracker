@@ -21,14 +21,14 @@ namespace NutritionalTracker.Models
 
         public void AddLogEntry(Database.FoodLog foodLog)
         {
-            Meal meal = MealsWithProducts.Keys.First(m => m.MealId == foodLog.MealId);
+            var meal = MealsWithProducts.Keys.First(m => m.MealId == foodLog.MealId);
             MealsWithProducts[meal].Add(_mapperProcessor.Map<Database.FoodLog, LogEntry>(foodLog));
         }
 
         private void PrepareDictionary(IEnumerable<Meal> meals)
         {
             MealsWithProducts = new Dictionary<Meal, ICollection<LogEntry>>();
-            foreach (Meal meal in meals)
+            foreach (var meal in meals)
             {
                 MealsWithProducts.Add(meal, new List<LogEntry>());
             }

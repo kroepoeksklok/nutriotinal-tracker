@@ -3,5 +3,5 @@ using NutritionalTracker.Database;
 
 namespace NutritionalTracker.Queries
 {
-    public class GetAllProductsQuery : IQuery<IReadOnlyList<Product>>{ }
+    public class GetAllProductsQuery : IQuery<IReadOnlyList<Product>> { }
 }

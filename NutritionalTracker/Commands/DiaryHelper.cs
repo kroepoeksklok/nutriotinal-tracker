@@ -7,7 +7,7 @@ namespace NutritionalTracker.Commands
     {
         public static void AddProductToDiary(INutrionalModel context, int amountConsumed, Product product, byte mealId, DateTime consumedDate)
         {
-            decimal amountConsumedRatio = (decimal)amountConsumed / product.ValuesPer;
+            var amountConsumedRatio = (decimal)amountConsumed / product.ValuesPer;
 
             context.FoodLogs.Add(new FoodLog
             {

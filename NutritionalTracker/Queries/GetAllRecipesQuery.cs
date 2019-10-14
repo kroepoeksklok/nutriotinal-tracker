@@ -2,5 +2,5 @@
 
 namespace NutritionalTracker.Queries
 {
-    public class GetAllRecipesQuery : IQuery<IReadOnlyList<Database.Recipe>>{ }
+    public class GetAllRecipesQuery : IQuery<IReadOnlyList<Database.Recipe>> { }
 }

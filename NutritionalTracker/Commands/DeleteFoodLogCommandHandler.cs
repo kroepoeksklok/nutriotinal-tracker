@@ -14,7 +14,7 @@ namespace NutritionalTracker.Commands
 
         public void Handle(DeleteFoodLogCommand command)
         {
-            FoodLog foodLog = _context.FoodLogs.First(log => log.FoodLogId == command.FoodLogId);
+            var foodLog = _context.FoodLogs.First(log => log.FoodLogId == command.FoodLogId);
             _context.FoodLogs.Remove(foodLog);
             _context.SaveChanges();
         }
