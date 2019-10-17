@@ -4,12 +4,8 @@ using NutritionalTracker.Mappers;
 using NutritionalTracker.Queries;
 using SimpleInjector;
 using SimpleInjector.Diagnostics;
-using System;
-using System.Globalization;
-using System.Windows.Data;
 
-namespace NutritionalTracker
-{
+namespace NutritionalTracker {
     public static class SimpleInjectorContainer
     {
         private static Container _container;

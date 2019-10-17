@@ -27,9 +27,28 @@
             set { }
         }
 
+        public bool CarbohydrateGoalExceeded {
+            get => GoalExceeded(TotalCarbohydrates, Goals.Carbohydrates);
+            set { }
+        }
+
+        public bool ProteinGoalExceeded {
+            get => GoalExceeded(TotalProteins, Goals.Proteins);
+            set { }
+        }
+
+        public bool FatGoalExceeded {
+            get => GoalExceeded(TotalFats, Goals.Fats);
+            set { }
+        }
+
         private decimal GetProgress(decimal totalAmount, int goal) {
             var progress = totalAmount / goal;
             return progress > 1 ? 1 : progress;
+        }
+
+        private bool GoalExceeded(decimal totalAmount, int goal) {
+            return totalAmount > goal;
         }
     }
 }

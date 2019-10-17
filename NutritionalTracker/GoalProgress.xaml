@@ -16,7 +16,7 @@
                 </Rectangle>
             </Border>
         </StackPanel>
-        <TextBlock>
+        <TextBlock Foreground="{Binding GoalExceeded, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource BoolToBrushConverter}}">
             <Run Text="{Binding Total, RelativeSource={RelativeSource AncestorType=UserControl}}" />
             <Run Text="g / " />
             <Run Text="{Binding Goal, RelativeSource={RelativeSource AncestorType=UserControl}}" />
