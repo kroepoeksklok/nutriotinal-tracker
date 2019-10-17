@@ -1,16 +1,12 @@
 ﻿using System;
 using NutritionalTracker.Database;
 
-namespace NutritionalTracker.Commands
-{
-    internal static class DiaryHelper
-    {
-        public static void AddProductToDiary(INutrionalModel context, int amountConsumed, Product product, byte mealId, DateTime consumedDate)
-        {
+namespace NutritionalTracker.Commands {
+    internal static class DiaryHelper {
+        public static void AddProductToDiary(INutrionalModel context, int amountConsumed, Product product, byte mealId, DateTime consumedDate) {
             var amountConsumedRatio = (decimal)amountConsumed / product.ValuesPer;
 
-            context.FoodLogs.Add(new FoodLog
-            {
+            context.FoodLogs.Add(new FoodLog {
                 ConsumedCarbohydrates = product.Carbohydrates * amountConsumedRatio,
                 Amount = amountConsumed,
                 ConsumedEnergy = product.Energy * amountConsumedRatio,

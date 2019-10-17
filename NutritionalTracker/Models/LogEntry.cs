@@ -1,7 +1,5 @@
-﻿namespace NutritionalTracker.Models
-{
-    public sealed class LogEntry
-    {
+﻿namespace NutritionalTracker.Models {
+    public sealed class LogEntry {
         public int FoodLogId { get; set; }
         public string ProductName { get; set; }
         public string ProducerName { get; set; }

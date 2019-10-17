@@ -3,19 +3,15 @@ using System.Data.Entity;
 using System.Linq;
 using NutritionalTracker.Database;
 
-namespace NutritionalTracker.Queries
-{
-    public class GetAllProductsQueryHandler : IQueryHandler<GetAllProductsQuery, IReadOnlyList<Product>>
-    {
+namespace NutritionalTracker.Queries {
+    public class GetAllProductsQueryHandler : IQueryHandler<GetAllProductsQuery, IReadOnlyList<Product>> {
         private readonly INutrionalModel _context;
 
-        public GetAllProductsQueryHandler(INutrionalModel context)
-        {
+        public GetAllProductsQueryHandler(INutrionalModel context) {
             _context = context;
         }
 
-        public IReadOnlyList<Product> Handle(GetAllProductsQuery query)
-        {
+        public IReadOnlyList<Product> Handle(GetAllProductsQuery query) {
             return _context.Products
                 .Include(product => product.Producer)
                 .Include(product => product.Unit)

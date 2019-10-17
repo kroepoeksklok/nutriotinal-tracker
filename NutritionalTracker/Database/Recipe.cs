@@ -1,13 +1,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace NutritionalTracker.Database
-{
-    public class Recipe
-    {
+namespace NutritionalTracker.Database {
+    public class Recipe {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Recipe()
-        {
+        public Recipe() {
             Ingredients = new HashSet<Ingredient>();
         }
 

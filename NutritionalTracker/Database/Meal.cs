@@ -1,13 +1,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace NutritionalTracker.Database
-{
-    public class Meal
-    {
+namespace NutritionalTracker.Database {
+    public class Meal {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Meal()
-        {
+        public Meal() {
             FoodLogs = new HashSet<FoodLog>();
         }
 

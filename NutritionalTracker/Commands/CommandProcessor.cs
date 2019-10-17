@@ -2,21 +2,17 @@
 using System.Diagnostics;
 using SimpleInjector;
 
-namespace NutritionalTracker.Commands
-{
-    public sealed class CommandProcessor : ICommandProcessor
-    {
+namespace NutritionalTracker.Commands {
+    public sealed class CommandProcessor : ICommandProcessor {
         private readonly Container _container;
 
-        public CommandProcessor(Container container)
-        {
+        public CommandProcessor(Container container) {
             _container = container;
         }
 
         [DebuggerStepThrough]
-        public void Process(ICommand command)
-        {
-            Type handlerType = typeof(ICommandHandler<>)
+        public void Process(ICommand command) {
+            var handlerType = typeof(ICommandHandler<>)
                 .MakeGenericType(command.GetType());
 
             dynamic handler = _container.GetInstance(handlerType);

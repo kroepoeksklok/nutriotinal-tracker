@@ -68,6 +68,14 @@
     <Compile Include="DailyFoodLog.xaml.cs">
       <DependentUpon>DailyFoodLog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GoalProgress.xaml.cs">
+      <DependentUpon>GoalProgress.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Goals.xaml.cs">
+      <DependentUpon>Goals.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GoalProgress.cs" />
+    <Compile Include="Models\SetGoals.cs" />
     <Compile Include="Queries\GetAllMealsQuery.cs" />
     <Compile Include="Queries\GetAllMealsQueryHandler.cs" />
     <Compile Include="Queries\GetAllProductsQuery.cs" />
@@ -90,6 +98,14 @@
     <Page Include="DailyFoodLog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GoalProgress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Goals.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -1,7 +1,5 @@
-﻿namespace NutritionalTracker.Commands
-{
-    public interface ICommandHandler<TCommand>
-    {
+﻿namespace NutritionalTracker.Commands {
+    public interface ICommandHandler<TCommand> {
         void Handle(TCommand command);
     }
 }

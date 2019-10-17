@@ -33,7 +33,11 @@
             <Button Command="{Binding AddProductToDiary}" Margin="0 5 0 0">Add product to diary</Button>
         </StackPanel>
         <StackPanel DockPanel.Dock="Right">
-            <nutritionalTracker:Statistics Stats="{Binding Statistics}" />
+            <DockPanel>
+                <nutritionalTracker:Statistics DockPanel.Dock="Top" Stats="{Binding Statistics}" />
+                <Separator DockPanel.Dock="Top" Margin="0,10" />
+                <nutritionalTracker:Goals DockPanel.Dock="Bottom" GoalProgress="{Binding GoalProgress}" />
+            </DockPanel>
         </StackPanel>
         <ScrollViewer Margin="10 0 10 0">
             <nutritionalTracker:DailyFoodLog DailyLog="{Binding DailyLog}" DeleteLogCommand="{Binding DeleteFoodLog}" />

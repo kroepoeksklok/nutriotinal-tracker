@@ -1,7 +1,5 @@
-﻿namespace NutritionalTracker.Models
-{
-    public sealed class Statistics
-    {
+﻿namespace NutritionalTracker.Models {
+    public sealed class Statistics {
         public decimal TotalEnergy { get; set; }
         public decimal TotalFats { get; set; }
         public decimal TotalSaturatedFats { get; set; }
@@ -12,8 +10,7 @@
         public decimal TotalProteins { get; set; }
         public decimal TotalSalt { get; set; }
 
-        public void AddLogEntry(Database.FoodLog foodLog)
-        {
+        public void AddLogEntry(Database.FoodLog foodLog) {
             TotalEnergy += foodLog.ConsumedEnergy;
             TotalFats += foodLog.ConsumedFats;
             TotalSaturatedFats += foodLog.ConsumedSaturatedFats;

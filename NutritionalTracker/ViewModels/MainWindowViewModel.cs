@@ -23,6 +23,7 @@ namespace NutritionalTracker.ViewModels {
         private Models.Meal _selectedMeal;
         private DailyLog _dailyLog;
         private Models.Statistics _statistics;
+        private Models.GoalProgress _goalProgress;
         private double _servingsEaten;
         private int _amountOfProductConsumed;
         private DateTime _selectedDate;
@@ -188,6 +189,14 @@ namespace NutritionalTracker.ViewModels {
             }
         }
 
+        public Models.GoalProgress GoalProgress {
+            get => _goalProgress;
+            set {
+                _goalProgress = value;
+                OnPropertyChanged(nameof(GoalProgress));
+            }
+        }
+
         private void AddProductToDiaryHandler(object parameter) {
             _commandProcessor.Process(new AddProductToDiaryCommand {
                 AmountConsumed = AmountOfProductConsumed,
@@ -239,6 +248,7 @@ namespace NutritionalTracker.ViewModels {
             LoadLogEntries();
             LoadFoodLog();
             LoadStatistics();
+            LoadGoals();
         }
 
 
@@ -265,6 +275,11 @@ namespace NutritionalTracker.ViewModels {
             }
 
             Statistics = statistics;
+        }
+
+        private void LoadGoals() {
+            var goalProgress = new Models.GoalProgress(Statistics, new SetGoals(238, 160, 45));
+            GoalProgress = goalProgress;
         }
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null) {

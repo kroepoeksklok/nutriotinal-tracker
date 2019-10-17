@@ -1,4 +1,3 @@
-﻿namespace NutritionalTracker.Commands
-{
+﻿namespace NutritionalTracker.Commands {
     public interface ICommand { }
 }

@@ -4,6 +4,9 @@ using NutritionalTracker.Mappers;
 using NutritionalTracker.Queries;
 using SimpleInjector;
 using SimpleInjector.Diagnostics;
+using System;
+using System.Globalization;
+using System.Windows.Data;
 
 namespace NutritionalTracker
 {
@@ -18,7 +21,6 @@ namespace NutritionalTracker
                 _container = new Container();
                 
                 RegisterModel();
-                //RegisterMappers();
 
                 _container.Register(typeof(ICommandHandler<>), typeof(ICommandHandler<>).Assembly);
                 _container.Register(typeof(ICommandProcessor), typeof(CommandProcessor));
@@ -40,14 +42,6 @@ namespace NutritionalTracker
 
             registration.SuppressDiagnosticWarning(DiagnosticType.DisposableTransientComponent, "Reason of suppression");
         }
-
-        //private static void RegisterMappers()
-        //{
-        //    _container.Register<IMealMapper, MealMapper>();
-        //    _container.Register<IRecipeMapper, RecipeMapper>();
-        //    _container.Register<IProductMapper, ProductMapper>();
-        //    _container.Register<IFoodLogMapper, FoodLogMapper>();
-        //}
 
         public static T Get<T>() where T : class
         {

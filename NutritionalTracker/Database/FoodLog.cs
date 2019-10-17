@@ -1,10 +1,8 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace NutritionalTracker.Database
-{
-    public class FoodLog
-    {
+namespace NutritionalTracker.Database {
+    public class FoodLog {
         public int FoodLogId { get; set; }
 
         public int ProductId { get; set; }

@@ -1,7 +1,5 @@
-namespace NutritionalTracker.Database
-{
-    public class Ingredient
-    {
+namespace NutritionalTracker.Database {
+    public class Ingredient {
         public int IngredientId { get; set; }
 
         public int RecipeId { get; set; }

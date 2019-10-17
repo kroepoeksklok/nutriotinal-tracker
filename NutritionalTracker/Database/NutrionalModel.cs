@@ -1,11 +1,8 @@
 using System.Data.Entity;
 
-namespace NutritionalTracker.Database
-{
-    public class NutrionalModel : DbContext, INutrionalModel
-    {
-        public NutrionalModel() : base("name=NutrionalModel")
-        {
+namespace NutritionalTracker.Database {
+    public class NutrionalModel : DbContext, INutrionalModel {
+        public NutrionalModel() : base("name=NutrionalModel") {
             Configuration.ProxyCreationEnabled = false;
         }
 
@@ -17,8 +14,7 @@ namespace NutritionalTracker.Database
         public IDbSet<Recipe> Recipes { get; set; }
         public IDbSet<Unit> Units { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
+        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
             modelBuilder.Entity<FoodLog>()
                 .Property(e => e.ConsumedEnergy)
                 .HasPrecision(9, 2);

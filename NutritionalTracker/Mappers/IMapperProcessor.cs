@@ -1,7 +1,5 @@
-﻿namespace NutritionalTracker.Mappers
-{
-    public interface IMapperProcessor
-    {
+﻿namespace NutritionalTracker.Mappers {
+    public interface IMapperProcessor {
         TTo Map<TFrom, TTo>(TFrom from);
     }
 }

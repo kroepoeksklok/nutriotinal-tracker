@@ -2,19 +2,15 @@
 using System.Linq;
 using NutritionalTracker.Database;
 
-namespace NutritionalTracker.Queries
-{
-    public class GetAllMealsQueryHandler : IQueryHandler<GetAllMealsQuery, IReadOnlyList<Meal>>
-    {
+namespace NutritionalTracker.Queries {
+    public class GetAllMealsQueryHandler : IQueryHandler<GetAllMealsQuery, IReadOnlyList<Meal>> {
         private readonly INutrionalModel _context;
 
-        public GetAllMealsQueryHandler(INutrionalModel context)
-        {
+        public GetAllMealsQueryHandler(INutrionalModel context) {
             _context = context;
         }
 
-        public IReadOnlyList<Meal> Handle(GetAllMealsQuery query)
-        {
+        public IReadOnlyList<Meal> Handle(GetAllMealsQuery query) {
             return _context.Meals.ToList();
         }
     }
