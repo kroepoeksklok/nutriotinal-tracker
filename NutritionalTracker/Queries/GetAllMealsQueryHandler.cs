@@ -11,7 +11,7 @@ namespace NutritionalTracker.Queries {
         }
 
         public IReadOnlyList<Meal> Handle(GetAllMealsQuery query) {
-            return _context.Meals.ToList();
+            return _context.Meals.OrderBy(m => m.Name).ToList();
         }
     }
 }
