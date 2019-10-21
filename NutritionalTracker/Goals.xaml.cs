@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace NutritionalTracker {
@@ -6,13 +7,13 @@ namespace NutritionalTracker {
     /// Interaction logic for Goals.xaml
     /// </summary>
     public partial class Goals : UserControl {
-        public static readonly DependencyProperty GoalProgressProperty = DependencyProperty.Register(nameof(GoalProgress), typeof(Models.GoalProgress), typeof(Goals), new FrameworkPropertyMetadata(default(Models.GoalProgress)) {
+        public static readonly DependencyProperty MyGoalsProperty = DependencyProperty.Register(nameof(MyGoals), typeof(IEnumerable<Models.Goal>), typeof(Goals), new FrameworkPropertyMetadata(default(IEnumerable<Models.Goal>)) {
             BindsTwoWayByDefault = true
         });
 
-        public Models.GoalProgress GoalProgress {
-            get => (Models.GoalProgress)GetValue(GoalProgressProperty);
-            set => SetValue(GoalProgressProperty, value);
+        public IEnumerable<Models.Goal> MyGoals {
+            get => (IEnumerable<Models.Goal>) GetValue(MyGoalsProperty);
+            set => SetValue(MyGoalsProperty, value);
         }
 
         public Goals() {

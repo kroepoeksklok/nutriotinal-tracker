@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using NutritionalTracker.Commands;
 using NutritionalTracker.Database;
 using NutritionalTracker.Mappers;
@@ -23,7 +24,7 @@ namespace NutritionalTracker.ViewModels {
         private Models.Meal _selectedMeal;
         private DailyLog _dailyLog;
         private Models.Statistics _statistics;
-        private Models.GoalProgress _goalProgress;
+        private ObservableCollection<Goal> _goals;
         private double _servingsEaten;
         private int _amountOfProductConsumed;
         private DateTime _selectedDate;
@@ -78,6 +79,8 @@ namespace NutritionalTracker.ViewModels {
                     SelectedRecipe = Recipes.FirstOrDefault(r => r.RecipeId == currentlySelectedRecipeId);
                     SelectedProduct = Products.FirstOrDefault(p => p.ProductId == currentlySelectedProductId);
                     SelectedMeal = Meals.FirstOrDefault(m => m.MealId == currentlySelectedMealId);
+
+                    
                 }
             });
         }
@@ -119,7 +122,6 @@ namespace NutritionalTracker.ViewModels {
             }
         }
 
-
         public ObservableCollection<Models.Product> Products {
             get => _products;
             set {
@@ -146,7 +148,6 @@ namespace NutritionalTracker.ViewModels {
                 OnPropertyChanged(nameof(AmountOfProductConsumed));
             }
         }
-
 
         public ObservableCollection<Models.Meal> Meals {
             get => _meals;
@@ -189,13 +190,14 @@ namespace NutritionalTracker.ViewModels {
             }
         }
 
-        public Models.GoalProgress GoalProgress {
-            get => _goalProgress;
+        public ObservableCollection<Models.Goal> Goals{
+            get => _goals;
             set {
-                _goalProgress = value;
-                OnPropertyChanged(nameof(GoalProgress));
+                _goals = value;
+                OnPropertyChanged(nameof(Goals));
             }
         }
+
 
         private void AddProductToDiaryHandler(object parameter) {
             _commandProcessor.Process(new AddProductToDiaryCommand {
@@ -278,8 +280,12 @@ namespace NutritionalTracker.ViewModels {
         }
 
         private void LoadGoals() {
-            var goalProgress = new Models.GoalProgress(Statistics, new SetGoals(238, 160, 45));
-            GoalProgress = goalProgress;
+            var goals = new ObservableCollection<Goal>(new List<Goal> {
+                new Goal("Carbohydrates", Statistics.TotalCarbohydrates, 238) { BarColor = new SolidColorBrush(Color.FromRgb(255,0,0)) },
+                new Goal("Proteins", Statistics.TotalProteins, 160) { BarColor = new SolidColorBrush(Color.FromRgb(0,255,0)) },
+                new Goal("Fats", Statistics.TotalFats, 45) { BarColor = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0,0,255)) },
+            });
+            Goals = goals;
         }
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null) {

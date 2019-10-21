@@ -7,20 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <local:GoalProgress Label="Carbohydrates" BarColor="Red" 
-                            Goal="{Binding GoalProgress.Goals.Carbohydrates, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                            Total="{Binding GoalProgress.TotalCarbohydrates, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                            Progress="{Binding GoalProgress.CarbohydratesProgress, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                            GoalExceeded="{Binding GoalProgress.CarbohydrateGoalExceeded, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-        <local:GoalProgress Label="Proteins" BarColor="Blue" 
-                            Goal="{Binding GoalProgress.Goals.Proteins, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                            Total="{Binding GoalProgress.TotalProteins, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                            Progress="{Binding GoalProgress.ProteinProgress, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                            GoalExceeded="{Binding GoalProgress.ProteinGoalExceeded, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-        <local:GoalProgress Label="Fats" BarColor="Green" 
-                            Goal="{Binding GoalProgress.Goals.Fats, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                            Total="{Binding GoalProgress.TotalFats, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                            Progress="{Binding GoalProgress.FatProgress, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                            GoalExceeded="{Binding GoalProgress.FatGoalExceeded, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+        <ItemsControl ItemsSource="{Binding MyGoals, RelativeSource={RelativeSource AncestorType=UserControl}}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:GoalProgress Label="{Binding Name}" BarColor="{Binding BarColor}" 
+                            Goal="{Binding IntakeGoal}" 
+                            Total="{Binding TotalIntake}" 
+                            Progress="{Binding Progress}"
+                            GoalExceeded="{Binding GoalExceeded}" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </StackPanel>
 </UserControl>

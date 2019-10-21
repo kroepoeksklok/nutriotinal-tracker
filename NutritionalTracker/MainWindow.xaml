@@ -36,7 +36,7 @@
             <DockPanel>
                 <nutritionalTracker:Statistics DockPanel.Dock="Top" Stats="{Binding Statistics}" />
                 <Separator DockPanel.Dock="Top" Margin="0,10" />
-                <nutritionalTracker:Goals DockPanel.Dock="Bottom" GoalProgress="{Binding GoalProgress}" />
+                <nutritionalTracker:Goals DockPanel.Dock="Bottom" MyGoals="{Binding Goals}" />
             </DockPanel>
         </StackPanel>
         <ScrollViewer Margin="10 0 10 0">
