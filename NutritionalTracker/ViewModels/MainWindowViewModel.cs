@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Media;
 using NutritionalTracker.Commands;
 using NutritionalTracker.Database;
@@ -16,9 +17,12 @@ using ICommand = System.Windows.Input.ICommand;
 
 namespace NutritionalTracker.ViewModels {
     public sealed class MainWindowViewModel : INotifyPropertyChanged {
-        private ObservableCollection<Models.Recipe> _recipes;
-        private ObservableCollection<Models.Product> _products;
-        private ObservableCollection<Models.Meal> _meals;
+        private readonly IQueryProcessor _queryProcessor;
+        private readonly ICommandProcessor _commandProcessor;
+        private readonly IMapperProcessor _mapperProcessor;
+        private readonly ObservableCollection<Models.Recipe> _recipes;
+        private readonly ObservableCollection<Models.Product> _products;
+        private readonly ObservableCollection<Models.Meal> _meals;
         private Models.Recipe _selectedRecipe;
         private Models.Product _selectedProduct;
         private Models.Meal _selectedMeal;
@@ -29,11 +33,6 @@ namespace NutritionalTracker.ViewModels {
         private int _amountOfProductConsumed;
         private DateTime _selectedDate;
         private string _unit;
-
-        private readonly IQueryProcessor _queryProcessor;
-        private readonly ICommandProcessor _commandProcessor;
-        private readonly IMapperProcessor _mapperProcessor;
-
         private IReadOnlyList<FoodLog> _logEntries;
 
         public MainWindowViewModel(IQueryProcessor queryProcessor, ICommandProcessor commandProcessor, IMapperProcessor mapperProcessor) {
@@ -43,14 +42,20 @@ namespace NutritionalTracker.ViewModels {
 
             var data = GetData();
 
-            Recipes = new ObservableCollection<Models.Recipe>(data.Item1);
-            SelectedRecipe = Recipes.First();
+            _recipes = new ObservableCollection<Models.Recipe>(data.Item1);
+            RecipesView = CollectionViewSource.GetDefaultView(_recipes);
+            RecipesView.SortDescriptions.Add(new SortDescription(nameof(Models.Recipe.Name), ListSortDirection.Ascending));
+            SelectedRecipe = _recipes.First();
 
-            Products = new ObservableCollection<Models.Product>(data.Item2);
-            SelectedProduct = Products.First();
+            _products = new ObservableCollection<Models.Product>(data.Item2);
+            ProductsView = CollectionViewSource.GetDefaultView(_products);
+            ProductsView.SortDescriptions.Add(new SortDescription(nameof(Models.Product.Name), ListSortDirection.Ascending));
+            SelectedProduct = _products.First();
 
-            Meals = new ObservableCollection<Models.Meal>(data.Item3);
-            SelectedMeal = Meals.First();
+            _meals = new ObservableCollection<Models.Meal>(data.Item3);
+            MealsView = CollectionViewSource.GetDefaultView(_meals);
+            MealsView.SortDescriptions.Add(new SortDescription(nameof(Models.Meal.Name), ListSortDirection.Ascending));
+            SelectedMeal = _meals.First();
 
             SelectedDate = DateTime.Now.Date;
             Unit = "gr / ml";
@@ -64,45 +69,27 @@ namespace NutritionalTracker.ViewModels {
                     Thread.Sleep(10000);
                     var newData = GetData();
 
-                    var currentlySelectedProductId = SelectedProduct.ProductId;
-                    var currentlySelectedMealId = SelectedMeal.MealId;
-                    var currentlySelectedRecipeId = SelectedRecipe.RecipeId;
-
-                    SelectedMeal = null;
-                    SelectedProduct = null;
-                    SelectedRecipe = null;
-
-                    Recipes = new ObservableCollection<Models.Recipe>(newData.Item1);
-                    Products = new ObservableCollection<Models.Product>(newData.Item2);
-                    Meals = new ObservableCollection<Models.Meal>(newData.Item3);
-
-                    SelectedRecipe = Recipes.FirstOrDefault(r => r.RecipeId == currentlySelectedRecipeId);
-                    SelectedProduct = Products.FirstOrDefault(p => p.ProductId == currentlySelectedProductId);
-                    SelectedMeal = Meals.FirstOrDefault(m => m.MealId == currentlySelectedMealId);
-
-                    
+                    LoadNewData(newData.Item1, _recipes, new RecipeComparer());
+                    LoadNewData(newData.Item2, _products, new ProductComparer());
+                    LoadNewData(newData.Item3, _meals, new MealComparer());
                 }
             });
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public ICollectionView RecipesView { get; }
+        public ICollectionView ProductsView { get; }
+        public ICollectionView MealsView { get; }
         public ICommand AddRecipeToDiary { get; set; }
         public ICommand AddProductToDiary { get; set; }
         public ICommand DeleteFoodLog { get; set; }
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public string Unit {
             get => _unit;
             set {
                 _unit = value;
                 OnPropertyChanged(nameof(Unit));
-            }
-        }
-
-        public ObservableCollection<Models.Recipe> Recipes {
-            get => _recipes;
-            set {
-                _recipes = value;
-                OnPropertyChanged(nameof(Recipes));
             }
         }
 
@@ -122,14 +109,6 @@ namespace NutritionalTracker.ViewModels {
             }
         }
 
-        public ObservableCollection<Models.Product> Products {
-            get => _products;
-            set {
-                _products = value;
-                OnPropertyChanged(nameof(Products));
-            }
-        }
-
         public Models.Product SelectedProduct {
             get => _selectedProduct;
             set {
@@ -146,14 +125,6 @@ namespace NutritionalTracker.ViewModels {
             set {
                 _amountOfProductConsumed = value;
                 OnPropertyChanged(nameof(AmountOfProductConsumed));
-            }
-        }
-
-        public ObservableCollection<Models.Meal> Meals {
-            get => _meals;
-            set {
-                _meals = value;
-                OnPropertyChanged(nameof(Meals));
             }
         }
 
@@ -190,7 +161,7 @@ namespace NutritionalTracker.ViewModels {
             }
         }
 
-        public ObservableCollection<Models.Goal> Goals{
+        public ObservableCollection<Models.Goal> Goals {
             get => _goals;
             set {
                 _goals = value;
@@ -198,6 +169,12 @@ namespace NutritionalTracker.ViewModels {
             }
         }
 
+        private void LoadNewData<T>(IEnumerable<T> newItems, ObservableCollection<T> currentItems, IEqualityComparer<T> comparer) {
+            var itemsToAdd = newItems.Except(currentItems, comparer);
+            foreach (var item in itemsToAdd) {
+                System.Windows.Application.Current.Dispatcher.Invoke(() => currentItems.Add(item));
+            }
+        }
 
         private void AddProductToDiaryHandler(object parameter) {
             _commandProcessor.Process(new AddProductToDiaryCommand {
@@ -253,7 +230,6 @@ namespace NutritionalTracker.ViewModels {
             LoadGoals();
         }
 
-
         private void LoadLogEntries() {
             var getFoodLogQuery = new GetFoodLogQuery {
                 Date = SelectedDate
@@ -262,7 +238,7 @@ namespace NutritionalTracker.ViewModels {
         }
 
         private void LoadFoodLog() {
-            var dailyLog = new DailyLog(_mapperProcessor, Meals);
+            var dailyLog = new DailyLog(_mapperProcessor, _meals);
             foreach (var foodLog in _logEntries) {
                 dailyLog.AddLogEntry(foodLog);
             }
@@ -283,7 +259,7 @@ namespace NutritionalTracker.ViewModels {
             var goals = new ObservableCollection<Goal>(new List<Goal> {
                 new Goal("Carbohydrates", Statistics.TotalCarbohydrates, 238) { BarColor = new SolidColorBrush(Color.FromRgb(255,0,0)) },
                 new Goal("Proteins", Statistics.TotalProteins, 160) { BarColor = new SolidColorBrush(Color.FromRgb(0,255,0)) },
-                new Goal("Fats", Statistics.TotalFats, 45) { BarColor = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0,0,255)) },
+                new Goal("Fats", Statistics.TotalFats, 45) { BarColor = new SolidColorBrush(Color.FromRgb(0,0,255)) },
             });
             Goals = goals;
         }

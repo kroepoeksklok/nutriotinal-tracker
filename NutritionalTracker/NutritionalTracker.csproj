@@ -97,6 +97,9 @@
       <DependentUpon>Statistics.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\MealComparer.cs" />
+    <Compile Include="ViewModels\ProductComparer.cs" />
+    <Compile Include="ViewModels\RecipeComparer.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Page Include="DailyFoodLog.xaml">

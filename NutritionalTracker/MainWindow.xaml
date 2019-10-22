@@ -13,18 +13,19 @@
             <Calendar SelectionMode="SingleDate" SelectedDate="{Binding SelectedDate}" />
             <Separator Margin="0 10 0 10" />
             <TextBlock>Meal</TextBlock>
-            <ComboBox ItemsSource="{Binding Meals, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedMeal}" />
+            <ComboBox ItemsSource="{Binding MealsView, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedMeal}" />
             <Separator Margin="0 10 0 10" />
             <TextBlock FontWeight="Bold">Add recipe to diary</TextBlock>
             <TextBlock>Recipe</TextBlock>
-            <ComboBox ItemsSource="{Binding Recipes, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedRecipe}" />
+            <ComboBox ItemsSource="{Binding RecipesView, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedRecipe}" />
+
             <TextBlock>Servings</TextBlock>
             <TextBox Text="{Binding ServingsEaten, UpdateSourceTrigger=PropertyChanged}" Width="30" HorizontalAlignment="Left" />
             <Button Command="{Binding AddRecipeToDiary}" Margin="0 5 0 0">Add recipe to diary</Button>
             <Separator Margin="0 10 0 10" />
             <TextBlock FontWeight="Bold">Add product to diary</TextBlock>
             <TextBlock>Product</TextBlock>
-            <ComboBox ItemsSource="{Binding Products, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="NameAndProducer" SelectedItem="{Binding SelectedProduct}" />
+            <ComboBox ItemsSource="{Binding ProductsView, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="NameAndProducer" SelectedItem="{Binding SelectedProduct}" />
             <TextBlock>Amount</TextBlock>
             <StackPanel Orientation="Horizontal">
                 <TextBox Text="{Binding AmountOfProductConsumed, UpdateSourceTrigger=PropertyChanged}" Width="30" HorizontalAlignment="Left" />
