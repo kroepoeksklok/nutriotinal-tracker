@@ -9,6 +9,7 @@
         public decimal TotalSugar { get; set; }
         public decimal TotalProteins { get; set; }
         public decimal TotalSalt { get; set; }
+        public decimal TotalCalories { get; set; }
 
         public void AddLogEntry(Database.FoodLog foodLog) {
             TotalEnergy += foodLog.ConsumedEnergy;
@@ -20,6 +21,7 @@
             TotalSugar += foodLog.ConsumedSugar;
             TotalProteins += foodLog.ConsumedProteins;
             TotalSalt += foodLog.ConsumedSalt;
+            TotalCalories += foodLog.ConsumedEnergy;
         }
     }
 }

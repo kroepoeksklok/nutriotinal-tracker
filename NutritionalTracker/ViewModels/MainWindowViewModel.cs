@@ -49,7 +49,7 @@ namespace NutritionalTracker.ViewModels {
 
             _products = new ObservableCollection<Models.Product>(data.Item2);
             ProductsView = CollectionViewSource.GetDefaultView(_products);
-            ProductsView.SortDescriptions.Add(new SortDescription(nameof(Models.Product.Name), ListSortDirection.Ascending));
+            ProductsView.SortDescriptions.Add(new SortDescription(nameof(Models.Product.NameAndProducer), ListSortDirection.Ascending));
             SelectedProduct = _products.First();
 
             _meals = new ObservableCollection<Models.Meal>(data.Item3);
@@ -257,9 +257,10 @@ namespace NutritionalTracker.ViewModels {
 
         private void LoadGoals() {
             var goals = new ObservableCollection<Goal>(new List<Goal> {
-                new Goal("Carbohydrates", Statistics.TotalCarbohydrates, 238) { BarColor = new SolidColorBrush(Color.FromRgb(255,0,0)) },
-                new Goal("Proteins", Statistics.TotalProteins, 160) { BarColor = new SolidColorBrush(Color.FromRgb(0,255,0)) },
-                new Goal("Fats", Statistics.TotalFats, 45) { BarColor = new SolidColorBrush(Color.FromRgb(0,0,255)) },
+                new Goal("Carbohydrates", Statistics.TotalCarbohydrates, 177) { BarColor = new SolidColorBrush(Color.FromRgb(255,0,0)) },
+                new Goal("Proteins", Statistics.TotalProteins, 158) { BarColor = new SolidColorBrush(Color.FromRgb(0,255,0)) },
+                new Goal("Fats", Statistics.TotalFats, 38) { BarColor = new SolidColorBrush(Color.FromRgb(0,0,255)) },
+                new Goal("Calories", Statistics.TotalCalories, 1682) { BarColor = new SolidColorBrush(Color.FromRgb(255,255,0)) },
             });
             Goals = goals;
         }
