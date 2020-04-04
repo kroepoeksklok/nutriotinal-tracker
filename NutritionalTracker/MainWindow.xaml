@@ -25,7 +25,18 @@
             <Separator Margin="0 10 0 10" />
             <TextBlock FontWeight="Bold">Add product to diary</TextBlock>
             <TextBlock>Product</TextBlock>
-            <ComboBox ItemsSource="{Binding ProductsView, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="NameAndProducer" SelectedItem="{Binding SelectedProduct}" />
+            <!--<ComboBox ItemsSource="{Binding ProductsView, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="NameAndProducer" SelectedItem="{Binding SelectedProduct}" />-->
+            <ComboBox ItemsSource="{Binding ProductsView, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedProduct}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Fill="Yellow" Width="16" Height="16" Margin="0,2,5,2" Visibility="{Binding IsFavourite, Converter={StaticResource BoolToVisibilityConverter}}" />
+                            <TextBlock Text="{Binding NameAndProducer}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
             <TextBlock>Amount</TextBlock>
             <StackPanel Orientation="Horizontal">
                 <TextBox Text="{Binding AmountOfProductConsumed, UpdateSourceTrigger=PropertyChanged}" Width="30" HorizontalAlignment="Left" />

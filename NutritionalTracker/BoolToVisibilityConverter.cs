@@ -1,22 +1,26 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
-using System.Windows.Media;
 
 namespace NutritionalTracker
 {
-    public sealed class BoolToBrushConverter : IValueConverter {
-        public Brush BrushIfTrue { get; set; }
-        public Brush BrushIfFalse { get; set; }
+    public sealed class BoolToVisibilityConverter : IValueConverter
+    {
+        public bool Collapse { get; set; }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (!(value is bool)) {
-                return BrushIfFalse;
+                return Visibility.Visible;
             }
 
             var boolValue = (bool) value;
 
-            return boolValue ? BrushIfTrue : BrushIfFalse;
+            if(boolValue) {
+                return Visibility.Visible;
+            }
+
+            return Collapse ? Visibility.Collapsed : (object) Visibility.Hidden;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {

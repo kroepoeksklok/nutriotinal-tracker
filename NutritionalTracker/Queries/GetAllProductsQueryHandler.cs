@@ -15,7 +15,8 @@ namespace NutritionalTracker.Queries {
             return _context.Products
                 .Include(product => product.Producer)
                 .Include(product => product.Unit)
-                .OrderBy(product => product.Producer.Name)
+                .OrderByDescending(product => product.IsFavourite)
+                .ThenBy(product => product.Producer.Name)
                 .ThenBy(product => product.Name)
                 .ToList();
         }

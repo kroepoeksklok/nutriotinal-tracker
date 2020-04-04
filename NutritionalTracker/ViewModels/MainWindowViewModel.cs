@@ -49,6 +49,7 @@ namespace NutritionalTracker.ViewModels {
 
             _products = new ObservableCollection<Models.Product>(data.Item2);
             ProductsView = CollectionViewSource.GetDefaultView(_products);
+            ProductsView.SortDescriptions.Add(new SortDescription(nameof(Models.Product.IsFavourite), ListSortDirection.Descending));
             ProductsView.SortDescriptions.Add(new SortDescription(nameof(Models.Product.NameAndProducer), ListSortDirection.Ascending));
             SelectedProduct = _products.First();
 

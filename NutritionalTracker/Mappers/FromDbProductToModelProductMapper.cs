@@ -5,7 +5,8 @@
                 ProductId = product.ProductId,
                 Name = product.Name,
                 Producer = product.Producer.Name,
-                Unit = product.Unit.Name
+                Unit = product.Unit.Name,
+                IsFavourite = product.IsFavourite
             };
         }
     }

@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BoolToBrushConverter.cs" />
+    <Compile Include="BoolToVisibilityConverter.cs" />
     <Compile Include="DailyFoodLog.xaml.cs">
       <DependentUpon>DailyFoodLog.xaml</DependentUpon>
     </Compile>
