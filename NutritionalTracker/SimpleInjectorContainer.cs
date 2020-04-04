@@ -5,7 +5,8 @@ using NutritionalTracker.Queries;
 using SimpleInjector;
 using SimpleInjector.Diagnostics;
 
-namespace NutritionalTracker {
+namespace NutritionalTracker
+{
     public static class SimpleInjectorContainer
     {
         private static Container _container;
