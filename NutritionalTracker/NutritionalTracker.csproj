@@ -49,6 +49,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
@@ -79,6 +80,7 @@
     <Compile Include="Goals.xaml.cs">
       <DependentUpon>Goals.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MacroGoals.cs" />
     <Compile Include="Models\Goal.cs" />
     <Compile Include="Queries\GetAllMealsQuery.cs" />
     <Compile Include="Queries\GetAllMealsQueryHandler.cs" />
@@ -189,7 +191,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\trashcan.png" />
