@@ -23,5 +23,24 @@ namespace NutritionalTracker.Commands {
                 MealId = mealId
             });
         }
+
+        public static void CopyFoodlog(INutrionalModel context, FoodLog foodLog, byte mealId, DateTime consumedDate) {
+            context.FoodLogs.Add(new FoodLog {
+                ConsumedCarbohydrates = foodLog.ConsumedCarbohydrates,
+                Amount = foodLog.Amount,
+                ConsumedEnergy = foodLog.ConsumedEnergy,
+                ConsumedFats = foodLog.ConsumedFats,
+                ConsumedMonoUnsaturatedFats = foodLog.ConsumedMonoUnsaturatedFats,
+                ConsumedPolyUnsaturatedFats = foodLog.ConsumedPolyUnsaturatedFats,
+                ConsumedProteins = foodLog.ConsumedProteins,
+                ConsumedSalt = foodLog.ConsumedSalt,
+                ConsumedSaturatedFats = foodLog.ConsumedSaturatedFats,
+                ConsumedSugar = foodLog.ConsumedSugar,
+                ProductId = foodLog.ProductId,
+                Date = consumedDate,
+                UnitId = foodLog.UnitId,
+                MealId = mealId
+            });
+        }
     }
 }
