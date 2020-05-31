@@ -26,12 +26,14 @@ namespace NutritionalTracker.ViewModels {
         private Models.Recipe _selectedRecipe;
         private Models.Product _selectedProduct;
         private Models.Meal _selectedMeal;
+        private Models.Meal _selectedMealForCopy;
         private DailyLog _dailyLog;
         private Models.Statistics _statistics;
         private ObservableCollection<Goal> _goals;
         private double _servingsEaten;
         private int _amountOfProductConsumed;
         private DateTime _selectedDate;
+        private DateTime _selectedDateForCopy;
         private string _unit;
         private IReadOnlyList<FoodLog> _logEntries;
 
@@ -63,6 +65,7 @@ namespace NutritionalTracker.ViewModels {
 
             AddProductToDiary = new RelayCommand(AddProductToDiaryHandler, o => SelectedProduct != null && _amountOfProductConsumed > 0 && SelectedMeal != null);
             AddRecipeToDiary = new RelayCommand(AddRecipeToDiaryHandler, o => SelectedRecipe != null && _servingsEaten > 0 && SelectedMeal != null);
+            CopyToDiary = new RelayCommand(CopyToDiaryHandler, o => SelectedMealForCopy != null);
             DeleteFoodLog = new RelayCommand(DeleteFoodLogHandler);
 
             Task.Run(() => {
@@ -85,6 +88,7 @@ namespace NutritionalTracker.ViewModels {
         public ICommand AddRecipeToDiary { get; set; }
         public ICommand AddProductToDiary { get; set; }
         public ICommand DeleteFoodLog { get; set; }
+        public ICommand CopyToDiary { get; set; }
 
         public string Unit {
             get => _unit;
@@ -137,11 +141,28 @@ namespace NutritionalTracker.ViewModels {
             }
         }
 
+        public Models.Meal SelectedMealForCopy {
+            get => _selectedMealForCopy;
+            set {
+                _selectedMealForCopy = value;
+                OnPropertyChanged(nameof(SelectedMealForCopy));
+            }
+        }
+
         public DateTime SelectedDate {
             get => _selectedDate;
             set {
                 _selectedDate = value;
                 OnPropertyChanged(nameof(SelectedDate));
+                LoadDailyData();
+            }
+        }
+
+        public DateTime SelectedDateForCopy {
+            get => _selectedDateForCopy;
+            set {
+                _selectedDateForCopy = value;
+                OnPropertyChanged(nameof(SelectedDateForCopy));
                 LoadDailyData();
             }
         }
@@ -196,6 +217,15 @@ namespace NutritionalTracker.ViewModels {
                 ConsumedDate = SelectedDate
             });
 
+            LoadDailyData();
+        }
+
+        private void CopyToDiaryHandler(object parameter) {
+            _commandProcessor.Process(new CopyToDiaryCommand {
+                MealId = SelectedMealForCopy.MealId,
+                DateToCopy = SelectedDateForCopy,
+                DateToCopyTo = SelectedDate
+            });
             LoadDailyData();
         }
 

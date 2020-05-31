@@ -42,6 +42,11 @@
                 <TextBlock Margin="10 0 0 0" Text="{Binding Unit}" />
             </StackPanel>
             <Button Command="{Binding AddProductToDiary}" Margin="0 5 0 0">Add product to diary</Button>
+            <Separator Margin="0 10 0 10" />
+            <TextBlock FontWeight="Bold">Copy from old meal</TextBlock>
+            <ComboBox ItemsSource="{Binding MealsView, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedMealForCopy}" />
+            <Calendar SelectionMode="SingleDate" SelectedDate="{Binding SelectedDateForCopy}" />
+            <Button Command="{Binding CopyToDiary}" Margin="0 5 0 0">Copy to diary</Button>
         </StackPanel>
         <StackPanel DockPanel.Dock="Right">
             <DockPanel>
