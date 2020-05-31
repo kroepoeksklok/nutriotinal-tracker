@@ -25,7 +25,6 @@
             <Separator Margin="0 10 0 10" />
             <TextBlock FontWeight="Bold">Add product to diary</TextBlock>
             <TextBlock>Product</TextBlock>
-            <!--<ComboBox ItemsSource="{Binding ProductsView, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="NameAndProducer" SelectedItem="{Binding SelectedProduct}" />-->
             <ComboBox ItemsSource="{Binding ProductsView, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedProduct}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
