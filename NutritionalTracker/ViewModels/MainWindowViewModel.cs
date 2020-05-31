@@ -61,6 +61,8 @@ namespace NutritionalTracker.ViewModels {
             SelectedMeal = _meals.First();
 
             SelectedDate = DateTime.Now.Date;
+            SelectedDateForCopy = DateTime.Now.Date;
+
             Unit = "gr / ml";
 
             AddProductToDiary = new RelayCommand(AddProductToDiaryHandler, o => SelectedProduct != null && _amountOfProductConsumed > 0 && SelectedMeal != null);
@@ -163,7 +165,6 @@ namespace NutritionalTracker.ViewModels {
             set {
                 _selectedDateForCopy = value;
                 OnPropertyChanged(nameof(SelectedDateForCopy));
-                LoadDailyData();
             }
         }
 
