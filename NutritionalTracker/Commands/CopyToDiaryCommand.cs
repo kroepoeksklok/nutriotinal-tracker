@@ -6,5 +6,6 @@ namespace NutritionalTracker.Commands
     {
         public byte MealId { get; set; }
         public DateTime DateToCopy { get; set; }
+        public DateTime DateToCopyTo { get; set; }
     }
 }
