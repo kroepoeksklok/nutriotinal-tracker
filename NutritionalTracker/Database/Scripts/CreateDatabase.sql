@@ -92,6 +92,8 @@ CREATE TABLE [dbo].[Products](
 	[Sugar] [decimal](9, 2) NOT NULL,
 	[Proteins] [decimal](9, 2) NOT NULL,
 	[Salt] [decimal](9, 2) NOT NULL,
+	[IsFavourite] [bit] NOT NULL DEFAULT 0,
+	[IsIngredientOnly] [bit] NOT NULL DEFAULT 0,
  CONSTRAINT [PK_Products] PRIMARY KEY CLUSTERED 
 (
 	[ProductId] ASC
