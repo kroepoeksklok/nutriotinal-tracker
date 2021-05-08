@@ -243,7 +243,7 @@ namespace NutritionalTracker.ViewModels {
             var recipesQuery = new GetAllRecipesQuery();
             var dbRecipes = _queryProcessor.Process(recipesQuery);
 
-            var productsQuery = new GetAllProductsQuery();
+            var productsQuery = new GetProductsForDailyLogQuery();
             var dbProducts = _queryProcessor.Process(productsQuery);
 
             var mealsQuery = new GetAllMealsQuery();
