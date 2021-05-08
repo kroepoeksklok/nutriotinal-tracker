@@ -4,7 +4,7 @@ using NutritionalTracker.Database;
 
 namespace NutritionalTracker.Queries
 {
-    public class GetAllProducersQueryHandler : IQueryHandler<GetAllProducersQuery, IReadOnlyList<Producer>>
+    public class GetAllProducersQueryHandler : IQueryHandler<GetAllProducersQuery, IReadOnlyList<ProducerListItem>>
     {
         private readonly INutrionalModel _context;
 
@@ -12,8 +12,15 @@ namespace NutritionalTracker.Queries
             _context = context;
         }
 
-        public IReadOnlyList<Producer> Handle(GetAllProducersQuery query) {
-            return _context.Producers.OrderBy(m => m.Name).ToList();
+        public IReadOnlyList<ProducerListItem> Handle(GetAllProducersQuery query) {
+            return _context
+                .Producers
+                .OrderBy(m => m.Name)
+                .Select(p => new ProducerListItem {
+                    ProducerId = p.ProducerId,
+                    Name = p.Name,
+                    CanBeDeleted = p.Products.Count == 0
+                }).ToList();
         }
     }
 }

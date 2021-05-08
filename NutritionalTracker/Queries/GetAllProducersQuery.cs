@@ -2,5 +2,5 @@
 using NutritionalTracker.Database;
 
 namespace NutritionalTracker.Queries { 
-    public class GetAllProducersQuery : IQuery<IReadOnlyList<Producer>> { }
+    public class GetAllProducersQuery : IQuery<IReadOnlyList<ProducerListItem>> { }
 }
