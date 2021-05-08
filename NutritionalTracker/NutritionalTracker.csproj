@@ -118,6 +118,7 @@
     <Compile Include="UserControls\Statistics.xaml.cs">
       <DependentUpon>Statistics.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AddProducerViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MealComparer.cs" />
     <Compile Include="ViewModels\ProducersViewModel.cs" />
