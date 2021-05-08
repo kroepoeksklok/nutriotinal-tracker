@@ -44,6 +44,7 @@ namespace NutritionalTracker.Database {
         public decimal Salt { get; set; }
 
         public bool IsFavourite { get; set; }
+        public bool IsIngredientOnly { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public ICollection<FoodLog> FoodLogs { get; set; }
