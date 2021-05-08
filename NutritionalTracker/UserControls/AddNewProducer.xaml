@@ -8,7 +8,7 @@
     <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
         <StackPanel Orientation="Horizontal">
             <Label Width="100">Name:</Label>
-            <TextBox Width="250"></TextBox>
+            <TextBox Width="250" Text="{Binding NewProducerName}"></TextBox>
         </StackPanel>
         <Button HorizontalContentAlignment="Left" HorizontalAlignment="Left" Padding="10 2 10 2" Command="{Binding AddProducer}">Add producer</Button>
     </StackPanel>
