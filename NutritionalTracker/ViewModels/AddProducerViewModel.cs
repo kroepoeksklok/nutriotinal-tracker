@@ -4,8 +4,7 @@ using System.Runtime.CompilerServices;
 using NutritionalTracker.Commands;
 using ICommand = System.Windows.Input.ICommand;
 
-namespace NutritionalTracker.ViewModels
-{
+namespace NutritionalTracker.ViewModels {
     public sealed class AddProducerViewModel : INotifyPropertyChanged {
         private readonly ICommandProcessor _commandProcessor;
         private string _newProducerName;
