@@ -73,6 +73,7 @@
     <Compile Include="BoolToBrushConverter.cs" />
     <Compile Include="BoolToVisibilityConverter.cs" />
     <Compile Include="Commands\AddProducerCommand.cs" />
+    <Compile Include="Commands\AddProducerCommandHandler.cs" />
     <Compile Include="Commands\CopyToDiaryCommand.cs" />
     <Compile Include="Commands\CopyToDiaryCommandHandler.cs" />
     <Compile Include="Database\ProducerListItem.cs" />
