@@ -12,7 +12,11 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <DockPanel>
-                                <Button DockPanel.Dock="Left" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" CommandParameter="{Binding}">
+                                <Button DockPanel.Dock="Left" BorderThickness="0" 
+                                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" 
+                                        Visibility="{Binding CanBeDeleted, Converter={StaticResource BoolToVisibilityConverterHidden}}" 
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.DeleteProducer}" 
+                                        CommandParameter="{Binding}">
                                     <Image Source="../Assets/trashcan.png" Width="15" Height="15" />
                                 </Button>
                                 <TextBlock Text="{Binding Name}"></TextBlock>

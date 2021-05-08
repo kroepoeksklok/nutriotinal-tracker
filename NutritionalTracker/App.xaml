@@ -6,5 +6,6 @@
     <Application.Resources>
         <nutritionalTracker:BoolToBrushConverter BrushIfTrue="Red" BrushIfFalse="Black" x:Key="BoolToBrushConverter" />
         <nutritionalTracker:BoolToVisibilityConverter Collapse="True" x:Key="BoolToVisibilityConverter" />
+        <nutritionalTracker:BoolToVisibilityConverter Collapse="False" x:Key="BoolToVisibilityConverterHidden" />
     </Application.Resources>
 </Application>

@@ -30,21 +30,12 @@ namespace NutritionalTracker.ViewModels
             ProducersView = CollectionViewSource.GetDefaultView(_producers);
             ProducersView.SortDescriptions.Add(new SortDescription(nameof(Models.Producer.Name), ListSortDirection.Ascending));
 
-            AddProducer = new RelayCommand(AddProducerHandler, o => !string.IsNullOrWhiteSpace(NewProducerName));
+            DeleteProducer = new RelayCommand(DeleteProducerHandler);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public ICollectionView ProducersView { get; }
-        public ICommand AddProducer { get; set; }
-
-        public string NewProducerName {
-            get => _newProducerName;
-            set {
-                _newProducerName = value;
-                OnPropertyChanged(nameof(NewProducerName));
-            }
-        }
-
+        public ICommand DeleteProducer { get; set; }
 
         public IEnumerable<Models.Producer> GetProducers() {
             var producersQuery = new GetAllProducersQuery();
@@ -52,8 +43,8 @@ namespace NutritionalTracker.ViewModels
             return dbProducers.Select(_mapperProcessor.Map<Database.ProducerListItem, Models.Producer>);
         }
 
-        private void AddProducerHandler(object parameter) {
-
+        private void DeleteProducerHandler(object parameter) {
+            ;
         }
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null) {
