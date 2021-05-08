@@ -96,6 +96,9 @@
     <Compile Include="Queries\IQueryProcessor.cs" />
     <Compile Include="Queries\QueryProcessor.cs" />
     <Compile Include="SimpleInjectorContainer.cs" />
+    <Compile Include="UserControls\AddNewProducer.xaml.cs">
+      <DependentUpon>AddNewProducer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\DailyFoodLog.xaml.cs">
       <DependentUpon>DailyFoodLog.xaml</DependentUpon>
     </Compile>
@@ -107,6 +110,9 @@
     </Compile>
     <Compile Include="UserControls\Producers.xaml.cs">
       <DependentUpon>Producers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ProducersOverview.xaml.cs">
+      <DependentUpon>ProducersOverview.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Statistics.xaml.cs">
       <DependentUpon>Statistics.xaml</DependentUpon>
@@ -150,6 +156,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\AddNewProducer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\DailyFoodLog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -163,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Producers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ProducersOverview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

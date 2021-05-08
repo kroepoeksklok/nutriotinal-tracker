@@ -18,7 +18,7 @@
                                         <DockPanel>
                                             <DockPanel DockPanel.Dock="Top">
                                                 <Button DockPanel.Dock="Left" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Command="{Binding DeleteLogCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}">
-                                                    <Image Source="Assets/trashcan.png" Width="15" Height="15" />
+                                                    <Image Source="../Assets/trashcan.png" Width="15" Height="15" />
                                                 </Button>
                                                 <TextBlock Text="{Binding LogSummary}" Margin="10 0 0 0" FontWeight="Bold" />
                                             </DockPanel>
