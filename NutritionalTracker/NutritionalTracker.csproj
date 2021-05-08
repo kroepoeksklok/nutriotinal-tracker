@@ -93,6 +93,8 @@
     <Compile Include="Queries\GetAllRecipesQueryHandler.cs" />
     <Compile Include="Queries\GetFoodLogQuery.cs" />
     <Compile Include="Queries\GetFoodLogQueryHandler.cs" />
+    <Compile Include="Queries\GetProductsForDailyLogHandler.cs" />
+    <Compile Include="Queries\GetProductsForDailyLogQuery.cs" />
     <Compile Include="Queries\IQuery.cs" />
     <Compile Include="Queries\IQueryHandler.cs" />
     <Compile Include="Queries\IQueryProcessor.cs" />
