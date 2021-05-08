@@ -1,12 +1,11 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace NutritionalTracker {
+namespace NutritionalTracker.UserControls {
     /// <summary>
     /// Interaction logic for GoalProgress.xaml
     /// </summary>
-    public partial class GoalProgress : UserControl {
+    public partial class GoalProgress {
         public static readonly DependencyProperty GoalProperty = DependencyProperty.Register(nameof(Goal), typeof(int), typeof(GoalProgress), new FrameworkPropertyMetadata(default(int)) {
             BindsTwoWayByDefault = true
         });
@@ -27,27 +26,27 @@ namespace NutritionalTracker {
         });
 
         public int Goal {
-            get => (int)GetValue(GoalProperty);
+            get => (int) GetValue(GoalProperty);
             set => SetValue(GoalProperty, value);
         }
 
         public decimal Progress {
-            get => (decimal)GetValue(ProgressProperty);
+            get => (decimal) GetValue(ProgressProperty);
             set => SetValue(ProgressProperty, value);
         }
 
         public decimal Total {
-            get => (decimal)GetValue(TotalProperty);
+            get => (decimal) GetValue(TotalProperty);
             set => SetValue(TotalProperty, value);
         }
 
         public Brush BarColor {
-            get => (Brush)GetValue(BarColorProperty);
+            get => (Brush) GetValue(BarColorProperty);
             set => SetValue(BarColorProperty, value);
         }
 
         public string Label {
-            get => (string)GetValue(LabelProperty);
+            get => (string) GetValue(LabelProperty);
             set => SetValue(LabelProperty, value);
         }
 

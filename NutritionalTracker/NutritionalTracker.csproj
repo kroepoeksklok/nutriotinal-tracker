@@ -74,16 +74,7 @@
     <Compile Include="BoolToVisibilityConverter.cs" />
     <Compile Include="Commands\CopyToDiaryCommand.cs" />
     <Compile Include="Commands\CopyToDiaryCommandHandler.cs" />
-    <Compile Include="DailyFoodLog.xaml.cs">
-      <DependentUpon>DailyFoodLog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Database\ProducerListItem.cs" />
-    <Compile Include="GoalProgress.xaml.cs">
-      <DependentUpon>GoalProgress.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Goals.xaml.cs">
-      <DependentUpon>Goals.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MacroGoals.cs" />
     <Compile Include="Mappers\FromDbProducerToModelProducerMapper.cs" />
     <Compile Include="Models\Goal.cs" />
@@ -105,11 +96,20 @@
     <Compile Include="Queries\IQueryProcessor.cs" />
     <Compile Include="Queries\QueryProcessor.cs" />
     <Compile Include="SimpleInjectorContainer.cs" />
-    <Compile Include="Statistics.xaml.cs">
-      <DependentUpon>Statistics.xaml</DependentUpon>
+    <Compile Include="UserControls\DailyFoodLog.xaml.cs">
+      <DependentUpon>DailyFoodLog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GoalProgress.xaml.cs">
+      <DependentUpon>GoalProgress.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Goals.xaml.cs">
+      <DependentUpon>Goals.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Producers.xaml.cs">
       <DependentUpon>Producers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Statistics.xaml.cs">
+      <DependentUpon>Statistics.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MealComparer.cs" />
@@ -118,18 +118,6 @@
     <Compile Include="ViewModels\RecipeComparer.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
-    <Page Include="DailyFoodLog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="GoalProgress.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Goals.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -162,11 +150,23 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Statistics.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="UserControls\DailyFoodLog.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\GoalProgress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Goals.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Producers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Statistics.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

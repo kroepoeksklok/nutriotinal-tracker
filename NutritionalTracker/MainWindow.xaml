@@ -3,7 +3,6 @@
         xmlns:controls="clr-namespace:NutritionalTracker.UserControls"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:nutritionalTracker="clr-namespace:NutritionalTracker"
         xmlns:vm="clr-namespace:NutritionalTracker.ViewModels"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         DataContext="{x:Static vm:ViewModelLocator.MainWindowViewModel}"
@@ -53,13 +52,13 @@
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Right">
                     <DockPanel>
-                        <nutritionalTracker:Statistics DockPanel.Dock="Top" Stats="{Binding Statistics}" />
+                        <controls:Statistics DockPanel.Dock="Top" Stats="{Binding Statistics}" />
                         <Separator DockPanel.Dock="Top" Margin="0,10" />
-                        <nutritionalTracker:Goals DockPanel.Dock="Bottom" MyGoals="{Binding Goals}" />
+                        <controls:Goals DockPanel.Dock="Bottom" MyGoals="{Binding Goals}" />
                     </DockPanel>
                 </StackPanel>
                 <ScrollViewer Margin="10 0 10 0">
-                    <nutritionalTracker:DailyFoodLog DailyLog="{Binding DailyLog}" DeleteLogCommand="{Binding DeleteFoodLog}" />
+                    <controls:DailyFoodLog DailyLog="{Binding DailyLog}" DeleteLogCommand="{Binding DeleteFoodLog}" />
                 </ScrollViewer>
             </DockPanel>
         </TabItem>

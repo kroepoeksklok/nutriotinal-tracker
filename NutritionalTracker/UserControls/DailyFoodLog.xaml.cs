@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using NutritionalTracker.Models;
 
-namespace NutritionalTracker {
+namespace NutritionalTracker.UserControls {
     /// <summary>
     /// Interaction logic for DailyFoodLog.xaml
     /// </summary>
@@ -12,7 +12,7 @@ namespace NutritionalTracker {
         });
 
         public DailyLog DailyLog {
-            get => (DailyLog)GetValue(DailyLogProperty);
+            get => (DailyLog) GetValue(DailyLogProperty);
             set => SetValue(DailyLogProperty, value);
         }
 
@@ -20,7 +20,7 @@ namespace NutritionalTracker {
         public static readonly DependencyProperty DeleteLogCommandProperty = DependencyProperty.Register(nameof(DeleteLogCommand), typeof(ICommand), typeof(DailyFoodLog), new PropertyMetadata(default(ICommand)));
 
         public ICommand DeleteLogCommand {
-            get => (ICommand)GetValue(DeleteLogCommandProperty);
+            get => (ICommand) GetValue(DeleteLogCommandProperty);
             set => SetValue(DeleteLogCommandProperty, value);
         }
 

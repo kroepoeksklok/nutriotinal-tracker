@@ -24,9 +24,5 @@ namespace NutritionalTracker.UserControls
         {
             InitializeComponent();
         }
-
-        private void ProducersGrid_AddingNewItem(object sender, AddingNewItemEventArgs e) {
-
-        }
     }
 }

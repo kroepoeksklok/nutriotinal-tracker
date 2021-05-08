@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace NutritionalTracker {
+namespace NutritionalTracker.UserControls {
     /// <summary>
     /// Interaction logic for Statistics.xaml
     /// </summary>
@@ -10,7 +10,7 @@ namespace NutritionalTracker {
         });
 
         public Models.Statistics Stats {
-            get => (Models.Statistics)GetValue(StatsProperty);
+            get => (Models.Statistics) GetValue(StatsProperty);
             set => SetValue(StatsProperty, value);
         }
 

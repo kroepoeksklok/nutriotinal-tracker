@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 
-namespace NutritionalTracker {
+namespace NutritionalTracker.UserControls {
     /// <summary>
     /// Interaction logic for Goals.xaml
     /// </summary>
-    public partial class Goals : UserControl {
+    public partial class Goals {
         public static readonly DependencyProperty MyGoalsProperty = DependencyProperty.Register(nameof(MyGoals), typeof(IEnumerable<Models.Goal>), typeof(Goals), new FrameworkPropertyMetadata(default(IEnumerable<Models.Goal>)) {
             BindsTwoWayByDefault = true
         });
