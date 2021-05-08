@@ -3,10 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:NutritionalTracker.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <DataGrid Name="ProducersGrid" ItemsSource="{Binding ProducersView}" CanUserAddRows="False" CanUserDeleteRows="False">
-
-    </DataGrid>
+    <ScrollViewer>
+        <StackPanel Orientation="Vertical">
+            <ItemsControl ItemsSource="{Binding ProducersView}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <DockPanel>
+                                <Button DockPanel.Dock="Left" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" CommandParameter="{Binding}">
+                                    <Image Source="../Assets/trashcan.png" Width="15" Height="15" />
+                                </Button>
+                                <TextBlock Text="{Binding Name}"></TextBlock>
+                            </DockPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>
